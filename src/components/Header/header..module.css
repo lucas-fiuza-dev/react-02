@@ -42,3 +42,6 @@
   font-weight: 700;
   font-size: 0.875rem;
 }
+.newTaskForm button img {
+  height: 1.250rem;
+}

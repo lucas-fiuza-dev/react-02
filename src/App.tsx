@@ -13,11 +13,30 @@ function App() {
       title: "teste",
       isCompleted: true,
     },
+    {
+      id: "tes",
+      title: "teste 2",
+      isCompleted: false,
+    },
   ])
+  function addTasks(taskTitle: string) {
+    setTasks([
+      ...tasks,
+      {
+        id: crypto.randomUUID(),
+        title: taskTitle,
+        isCompleted: false,
+      },
+    ])
+  }
+  function deleteTaskById(taskId: string) {
+    const newTasks = tasks.filter((task) => task.id !==taskId)
+    setTasks(newTasks)
+  }
   return (
     <>
-      <Header />
-      <Tasks tasks={tasks} />
+      <Header onAddTask={addTasks} />
+      <Tasks tasks={tasks} onDelete={deleteTaskById}/>
     </>
   )
 }
